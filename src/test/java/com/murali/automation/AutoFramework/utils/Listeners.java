@@ -4,8 +4,13 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class Listeners implements ITestListener {
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
+public class Listeners implements ITestListener {
+	ExtentSparkReporter spark;
+	ExtentReports extent;
 	@Override
 	public void onTestStart(ITestResult result) {
 		System.out.println(" On Test Start ");
@@ -13,11 +18,15 @@ public class Listeners implements ITestListener {
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
+		extent.createTest(result.getMethod().getMethodName())
+		  .log(Status.PASS, "test Passed"+result.getMethod().getMethodName());
 		System.out.println(" On Test Success ");
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
+		extent.createTest(result.getMethod().getMethodName())
+		  .log(Status.FAIL,"test Failed "+result.getMethod().getMethodName());
 		System.out.println(" On Test Failure ");
 	}
 
@@ -38,11 +47,15 @@ public class Listeners implements ITestListener {
 
 	@Override
 	public void onStart(ITestContext context) {
+		extent = new ExtentReports();
+		spark = new ExtentSparkReporter("Spark.html");
+		extent.attachReporter(spark);
 		System.out.println(" On Start ");
 	}
 
 	@Override
 	public void onFinish(ITestContext context) {
+		extent.flush();
 		System.out.println(" On Finish ");
 	}
 
