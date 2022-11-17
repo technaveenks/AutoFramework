@@ -1,9 +1,6 @@
 package com.murali.automation.AutoFramework.tests;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,7 +10,6 @@ import com.murali.automation.AutoFramework.pages.HomePage;
 import com.murali.automation.AutoFramework.pages.SearchResultsPage;
 import com.murali.automation.AutoFramework.pages.ShoppingCartPage;
 import com.murali.automation.AutoFramework.utils.BaseTest;
-import com.murali.automation.AutoFramework.utils.WebDriverHelper;
 
 public class SmokeTests extends BaseTest{
 	 SoftAssert softAssert = new SoftAssert();
@@ -29,10 +25,10 @@ public class SmokeTests extends BaseTest{
 	}
 
 	@Test
-	public void verifySuccessfulSearchOfItem() throws WebDriverException, IOException {
+	public void verifySuccessfulSearchOfItem() {
 		//driver.findElement(By.xpath("//*[@id='search']/input")).clear();
 		homePage.clearSearchText();
-		//driver.findElement(By.xpath("//*[@id='search']/input")).sendKeys("iphone");
+		//driver.findElement(By.xpath("//*[@id='search']/input")).sendKeys("iPhone");
 		homePage.enterSearchText("iPhone");
 		//driver.findElement(By.xpath("//*[@id=\"search\"]/span/button")).click();
 		searchResultsPage = homePage.clickOnSearchButton();
@@ -41,7 +37,7 @@ public class SmokeTests extends BaseTest{
 		searchResultsPage.clickOnCart();
 		shoppingCartPage = searchResultsPage.clickOnViewCart();
 		System.out.println(shoppingCartPage.getItemDescription());
-		softAssert.assertEquals(shoppingCartPage.getItemDescription(), "iPhones");
+		softAssert.assertEquals(shoppingCartPage.getItemDescription(), "iPhone");
 		System.out.println(" it proceeds");
 		softAssert.assertAll();
 		

@@ -2,14 +2,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="ECommerce">
 	<listeners>
-		<listener
-			class-name="com.murali.automation.AutoFramework.utils.Listeners"></listener>
+		<listener class-name="com.murali.automation.AutoFramework.utils.Listeners" />
 	</listeners>
 
 	<test thread-count="5" name="Smoke">
 		<classes>
-			<class
-				name="com.murali.automation.AutoFramework.tests.SmokeTests" />
+			<class name="com.murali.automation.AutoFramework.tests.SmokeTests" />
 		</classes>
-	</test> <!-- Smoke -->
-</suite> <!-- ECommerce -->
+	</test>
+	<!--  Smoke  -->
+</suite> <!--  ECommerce  -->
