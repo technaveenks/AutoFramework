@@ -41,7 +41,7 @@ public class SmokeTests extends BaseTest{
 		searchResultsPage.clickOnCart();
 		shoppingCartPage = searchResultsPage.clickOnViewCart();
 		System.out.println(shoppingCartPage.getItemDescription());
-		softAssert.assertEquals(shoppingCartPage.getItemDescription(), "iPhones");
+		softAssert.assertEquals(shoppingCartPage.getItemDescription(), "iPhone");
 		System.out.println(" it proceeds");
 		softAssert.assertAll();
 		
